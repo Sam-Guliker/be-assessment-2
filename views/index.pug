@@ -1,1 +1,19 @@
-h1 Hi
+extends layout
+
+block content
+    section
+        h1= title
+        form(method='POST' action='/register')
+            label(for='name') Name:
+            input(type='text', placeholder='first and last' name='name')
+            label(for='email') Email:
+            input(type='text', placeholder='name@email.com' name='email')
+            label(for='musicGenre') Favorite Music Genre:
+            input(type='text', placeholder='disco' name='musicGenre')
+            label(for='email') Email:
+            input(type='text', placeholder='name@email.com' name='email')
+            label(for='pw') Password:
+            input(type='password' name='password')
+            label(for='pw2') Confirm Password:
+            input(type='password' name='confrimPassword')
+            button(type='submit') Sign up
