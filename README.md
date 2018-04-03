@@ -12,7 +12,7 @@ and will be able to comment on it.
   - and receive comments.
 
 ## Database structure
-
+__To be continued__
 
 ## Setup
 Using NPM, MONGODB and PUG for my project.
@@ -28,4 +28,5 @@ using npm to get all the packages that you need for this project.
 npm install
 ```
 
+### templating engine
 I'm using [pug](https://pugjs.org/api/getting-started.html) as my rendering template engine for this project.
