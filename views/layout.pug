@@ -6,8 +6,10 @@ html(lang='eng')
     title= title
     block css
       link(rel='stylesheet', href='/css/style.css')
+  
   body
     header
+        a(href='#login') skip to login
         nav
             ul
                 li
@@ -16,6 +18,7 @@ html(lang='eng')
                     a(href="#") link 2
                 li 
                     a(href="#") link 3
-            button(type='Submit') Login
+            button#login(type='Submit') Login
+            
     block content
     script(src='/js/script.js')
