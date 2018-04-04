@@ -12,7 +12,7 @@ and will be able to comment on it.
   - and receive comments.
 
 ## Database structure
-__To be continued__
+![images](images/database-structure.png)
 
 ## Setup
 Using NPM, MONGODB and PUG for my project.

@@ -20,9 +20,11 @@
   "dependencies": {
     "body-parser": "*",
     "cookie-parser": "*",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "jstransformer-babel": "^2.1.0",
     "morgan": "*",
+    "mysql": "*",
     "pug": "*"
   },
   "devDependencies": {

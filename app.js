@@ -5,6 +5,21 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
+const mysql = require('mysql')
+
+require('dotenv').config({
+  path:'./vars.env'
+})
+
+console.log(process.env.DB_PORT)
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
+})
+
 //routes
 const index = require('./routes/index')
 const error = require('./routes/404')
@@ -21,6 +36,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+connection.connect(function(error){
+  if(error){
+    console.log(error)
+  }else{
+    console.log('ho')
+  }
+})
 app.use('/', index)
 app.use('/404', error)
 
