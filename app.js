@@ -1,24 +1,22 @@
 'use strict'
 // imports
-const express = require('express')
-const path = require('path')
-const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
-const logger = require('morgan')
-const mysql = require('mysql')
+const express =       require('express')
+const path =          require('path')
+const bodyParser =    require('body-parser')
+const cookieParser =  require('cookie-parser')
+const logger =        require('morgan')
+const mysql =         require('mysql')
 
 require('dotenv').config({
   path:'./vars.env'
 })
 
-console.log(process.env.DB_PORT)
-
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
+var connection = mysql.createConnection({
+  host     : process.env.DB_HOST,
+  port     : process.env.DB_PORT,
+  user     : process.env.DB_USER,
+  password : process.env.DB_PASSWORD,
+  database : process.env.DB_NAME
 })
 
 //routes
@@ -37,16 +35,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-connection.connect(function(error){
-  if(error){
-    console.log(error)
-  }else{
-    console.log('ho')
-  }
-})
-app.use('/', index)
+// app.use('/', index)
 app.use('/404', error)
+
+console.log(process.env.DB_USER)
+
+app.get('/', (req, res) => {
+  connection.connect();
+
+  connection.query('SELECT * FROM user', function (error, results, fields) {
+    if (error) {
+      console.log('gaat niet goed ' + error)
+    }
+    res.render('index'{
+      title
+    })
+  });
+
+  connection.end();
+})
 
 app.use(function(req, res, next){
   res.status(404);
